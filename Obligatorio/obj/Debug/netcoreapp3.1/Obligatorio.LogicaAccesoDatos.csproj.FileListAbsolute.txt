@@ -1,0 +1,16 @@
+C:\Users\USUARIO\Desktop\p3\Obligatorio\Obligatorio\bin\Debug\netcoreapp3.1\Obligatorio.LogicaAccesoDatos.deps.json
+C:\Users\USUARIO\Desktop\p3\Obligatorio\Obligatorio\bin\Debug\netcoreapp3.1\Obligatorio.LogicaAccesoDatos.runtimeconfig.json
+C:\Users\USUARIO\Desktop\p3\Obligatorio\Obligatorio\bin\Debug\netcoreapp3.1\Obligatorio.LogicaAccesoDatos.runtimeconfig.dev.json
+C:\Users\USUARIO\Desktop\p3\Obligatorio\Obligatorio\bin\Debug\netcoreapp3.1\Obligatorio.LogicaAccesoDatos.dll
+C:\Users\USUARIO\Desktop\p3\Obligatorio\Obligatorio\bin\Debug\netcoreapp3.1\Obligatorio.LogicaAccesoDatos.pdb
+C:\Users\USUARIO\Desktop\p3\Obligatorio\Obligatorio\bin\Debug\netcoreapp3.1\Obligatorio.LogicaNegocio.dll
+C:\Users\USUARIO\Desktop\p3\Obligatorio\Obligatorio\bin\Debug\netcoreapp3.1\Obligatorio.LogicaNegocio.pdb
+C:\Users\USUARIO\Desktop\p3\Obligatorio\Obligatorio\obj\Debug\netcoreapp3.1\Obligatorio.LogicaAccesoDatos.csproj.AssemblyReference.cache
+C:\Users\USUARIO\Desktop\p3\Obligatorio\Obligatorio\obj\Debug\netcoreapp3.1\Obligatorio.LogicaAccesoDatos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USUARIO\Desktop\p3\Obligatorio\Obligatorio\obj\Debug\netcoreapp3.1\Obligatorio.LogicaAccesoDatos.AssemblyInfoInputs.cache
+C:\Users\USUARIO\Desktop\p3\Obligatorio\Obligatorio\obj\Debug\netcoreapp3.1\Obligatorio.LogicaAccesoDatos.AssemblyInfo.cs
+C:\Users\USUARIO\Desktop\p3\Obligatorio\Obligatorio\obj\Debug\netcoreapp3.1\Obligatorio.LogicaAccesoDatos.csproj.CoreCompileInputs.cache
+C:\Users\USUARIO\Desktop\p3\Obligatorio\Obligatorio\obj\Debug\netcoreapp3.1\Obligatorio.LogicaAccesoDatos.csproj.CopyComplete
+C:\Users\USUARIO\Desktop\p3\Obligatorio\Obligatorio\obj\Debug\netcoreapp3.1\Obligatorio.LogicaAccesoDatos.dll
+C:\Users\USUARIO\Desktop\p3\Obligatorio\Obligatorio\obj\Debug\netcoreapp3.1\Obligatorio.LogicaAccesoDatos.pdb
+C:\Users\USUARIO\Desktop\p3\Obligatorio\Obligatorio\obj\Debug\netcoreapp3.1\Obligatorio.LogicaAccesoDatos.genruntimeconfig.cache
