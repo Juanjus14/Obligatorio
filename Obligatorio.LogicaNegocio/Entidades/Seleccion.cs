@@ -6,6 +6,7 @@ using System.Text;
 using Obligatorio.LogicaNegocio.ValueObjects;
 using Obligatorio.LogicaNegocio.InterfacesEntidades;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Obligatorio.LogicaNegocio.Entidades
 {

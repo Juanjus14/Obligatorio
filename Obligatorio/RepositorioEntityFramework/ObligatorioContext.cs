@@ -33,10 +33,22 @@ namespace Obligatorio.LogicaAccesoDatos.RepositorioEntityFramework
 
             modelBuilder.Entity<Seleccion>()
                .OwnsOne<PersonaContacto>(pc => pc.Contacto);
+           
+            modelBuilder.Entity<Seleccion>()
+               .HasOne<Pais>(se => se.Pais)
+               /*.WithOne()
+               .HasForeignKey("PaisId")
+               .OnDelete(DeleteBehavior.Cascade)
+               .IsRequired()*/;
+
+            modelBuilder.Entity<Partido>()
+               .OwnsMany<InfoSeleccionPartido>(pa => pa.Infoselpar);
+
+
 
             modelBuilder.Ignore<CodigoPais>();
             modelBuilder.Ignore<ImagenPais>();
-            /*modelBuilder.Ignore<InfoSeleccionPartido>();*/
+            modelBuilder.Ignore<InfoSeleccionPartido>();
             modelBuilder.Ignore<NombrePais>();
             modelBuilder.Ignore<PersonaContacto>();
 
