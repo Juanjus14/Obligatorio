@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Obligatorio.LogicaNegocio\Obligatorio.LogicaNegocio.csproj" />
+    <ProjectReference Include="..\ObligatorioLogicaAplicacion\Obligatorio.LogicaAplicacion.csproj" />
+  </ItemGroup>
+
+</Project>
