@@ -27,7 +27,7 @@ namespace Obligatorio.LogicaNegocio.Entidades
         public Pais(NombrePais nombre, CodigoPais codigo, double pbi, int poblacion, ImagenPais imagen, EnumeradosObligatorio.Regiones region)
         {
             this.Nombre = nombre;
-            this.Codigo = codigo;
+            this.CodigoISO = codigo;
             this.PBI = pbi;
             this.Poblacion = poblacion;
             this.Imagen = imagen;
@@ -36,12 +36,22 @@ namespace Obligatorio.LogicaNegocio.Entidades
 
         public bool Validar()
         {
-            return Nombre.Validar() && Codigo.Validar() && ValidarCodigoIso() && PBI > 0 && Poblacion > 0 && Imagen.Validar() && ((int)Region) >= 0 && ((int)Region) <= 4;
+            return Nombre.Validar() && CodigoISO.Validar() && ValidarCodigoIso() && PBI > 0 && Poblacion > 0 && Imagen.Validar() && ((int)Region) >= 0 && ((int)Region) <= 4;
         }
 
         public bool ValidarCodigoIso()
         {
-            return Nombre.Nombre[0] == Codigo.CodigoISO_Alfa3[0];
+            return Nombre.Nombre[0] == CodigoISO.CodigoISO_Alfa3[0];
+        }
+
+        public void Update(Pais paisConNuevosDatos)
+        {
+            Nombre.Nombre = paisConNuevosDatos.Nombre.Nombre;
+            CodigoISO.CodigoISO_Alfa3 = paisConNuevosDatos.CodigoISO.CodigoISO_Alfa3;
+            PBI = paisConNuevosDatos.PBI;
+            Poblacion = paisConNuevosDatos.Poblacion;
+            Imagen.URL = paisConNuevosDatos.Imagen.URL;
+            Region = paisConNuevosDatos.Region;
         }
     }
 }

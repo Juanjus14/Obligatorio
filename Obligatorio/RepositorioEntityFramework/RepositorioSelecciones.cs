@@ -8,7 +8,12 @@ namespace Obligatorio.LogicaAccesoDatos.RepositorioEntityFramework
 {
     public class RepositorioSelecciones : IRepositorioSeleccion
     {
-        public List<Seleccion> Selecciones = new List<Seleccion>();
+        ObligatorioContext _db { get; set; }
+
+        public RepositorioSelecciones(ObligatorioContext db)
+        {
+            _db = db;
+        }
         public void Add(Seleccion obj)
         {
             throw new NotImplementedException();
