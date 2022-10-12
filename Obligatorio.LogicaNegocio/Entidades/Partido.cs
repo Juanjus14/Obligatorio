@@ -19,14 +19,22 @@ namespace Obligatorio.LogicaNegocio.Entidades
         [DataType(DataType.Date)]
         public DateTime Fecha { get; set; }
         public EnumeradosObligatorio.Horas Hora { get; set; }
+
+        var fechaInicGrup = new DateTime(20, 11, 2022, 0, 0, 0);
+
+        var fechaFinGrup = new DateTime(2, 12, 2022, 23, 59, 59);
+
         public bool Validar()
         {
-            throw new NotImplementedException();
+            return Fecha >= fechaInicGrup && Fecha <= fechaFinGrup  ; 
         }
 
         public Partido() {
             
         }
+        
+
+        
 
         public Partido(InfoSeleccionPartido selUno, InfoSeleccionPartido selDos, DateTime fecha, EnumeradosObligatorio.Horas hora)
         {

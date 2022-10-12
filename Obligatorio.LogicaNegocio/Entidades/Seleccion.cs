@@ -41,7 +41,7 @@ namespace Obligatorio.LogicaNegocio.Entidades
 
         public bool Validar()
         {
-            throw new NotImplementedException();
+            return Pais.Validar() && Contacto.Validar() && CantidadApostadores >=0 && ((int)Grupo) >= 0 && ((int)Grupo) <= 7 && Puntuacion >= 0;
         }
     }
 }

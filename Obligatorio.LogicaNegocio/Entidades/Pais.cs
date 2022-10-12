@@ -13,7 +13,7 @@ namespace Obligatorio.LogicaNegocio.Entidades
         
         [Key] public int Id { get; set; }
         public NombrePais Nombre { get; set; }
-        public CodigoPais Codigo { get; set; }
+        public CodigoPais CodigoISO { get; set; }
         public double PBI { get; set; }
         public int Poblacion { get; set; }
         public ImagenPais Imagen { get; set; }
@@ -26,7 +26,6 @@ namespace Obligatorio.LogicaNegocio.Entidades
         
         public Pais(NombrePais nombre, CodigoPais codigo, double pbi, int poblacion, ImagenPais imagen, EnumeradosObligatorio.Regiones region)
         {
-           
             this.Nombre = nombre;
             this.Codigo = codigo;
             this.PBI = pbi;
@@ -37,7 +36,12 @@ namespace Obligatorio.LogicaNegocio.Entidades
 
         public bool Validar()
         {
-            throw new NotImplementedException();
+            return Nombre.Validar() && Codigo.Validar() && ValidarCodigoIso() && PBI > 0 && Poblacion > 0 && Imagen.Validar() && ((int)Region) >= 0 && ((int)Region) <= 4;
+        }
+
+        public bool ValidarCodigoIso()
+        {
+            return Nombre.Nombre[0] == Codigo.CodigoISO_Alfa3[0];
         }
     }
 }

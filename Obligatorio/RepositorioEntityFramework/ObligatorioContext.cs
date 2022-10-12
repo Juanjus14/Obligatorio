@@ -24,6 +24,7 @@ namespace Obligatorio.LogicaAccesoDatos.RepositorioEntityFramework
         {
 
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Pais>()

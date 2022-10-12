@@ -10,9 +10,9 @@ namespace Obligatorio.LogicaNegocio.ValueObjects
     {
         public string CodigoISO_Alfa3 { get; set;}
 
-    public bool Validar()
+    public bool Validar() 
     {
-        throw new NotImplementedException();
+            return CodigoISO_Alfa3.Length == 3;
     }
     
 }

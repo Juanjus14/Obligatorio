@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.ComponentModel.DataAnnotations.Schema;
+using Obligatorio.LogicaNegocio.InterfacesEntidades;
 
 
 namespace Obligatorio.LogicaNegocio.ValueObjects
 {
-    public class InfoSeleccionPartido
+    public class InfoSeleccionPartido: IValidacion
     {
         [Key] public int Id { get; set; }
         public Partido Partido { get; set; }
@@ -29,6 +30,11 @@ namespace Obligatorio.LogicaNegocio.ValueObjects
             this.RojasDirectas = rojasD;
             this.RojasAcumuladas = rojasA;
             this.Amarillas = amarillas;
+        }
+
+        public bool Validar()
+        {
+            throw new NotImplementedException();
         }
     }
 }

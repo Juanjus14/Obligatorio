@@ -11,8 +11,8 @@ namespace Obligatorio.LogicaNegocio.InterfacesRepositorios
     {
         public abstract bool NombreEsUnico(string nombre);
         public abstract bool CodigoEsUnico(string codigo);
-        public abstract bool NombreEsValido(string nombre);
-        public abstract bool CodigoEsValido(string codigo);
+        //public abstract bool NombreEsValido(string nombre);
+        //public abstract bool CodigoEsValido(string codigo);
         public abstract Pais BuscarPaisPorCodigo(string codigo);
         public abstract IEnumerable<Pais> ObtenerPaisesXRegion(EnumeradosObligatorio.Regiones region);
         public abstract bool PaisTieneRegistro(int idPais);
