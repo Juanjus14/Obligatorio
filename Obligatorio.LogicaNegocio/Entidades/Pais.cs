@@ -36,12 +36,21 @@ namespace Obligatorio.LogicaNegocio.Entidades
 
         public bool Validar()
         {
-            return Nombre.Validar() && CodigoISO.Validar() && ValidarCodigoIso() && PBI > 0 && Poblacion > 0 && Imagen.Validar() && ((int)Region) >= 0 && ((int)Region) <= 4;
+            return Nombre.Validar() && CodigoISO.Validar() && ValidarCodigoIso() && PBI > 0 && Poblacion > 0 && Imagen.Validar() && ValidarImagen() && ((int)Region) >= 0 && ((int)Region) <= 4;
         }
 
         public bool ValidarCodigoIso()
         {
             return Nombre.Nombre[0] == CodigoISO.CodigoISO_Alfa3[0];
+        }
+
+        public bool ValidarImagen()
+        {
+            if (!Imagen.URL.Contains(CodigoISO.CodigoISO_Alfa3) || !Imagen.URL.Contains("png"))
+            {
+                return false;
+            }
+            return true;
         }
 
         public void Update(Pais paisConNuevosDatos)

@@ -9,7 +9,7 @@ using Obligatorio.LogicaNegocio.InterfacesEntidades;
 
 namespace Obligatorio.LogicaNegocio.ValueObjects
 {
-    public class InfoSeleccionPartido: IValidacion
+    public class InfoSeleccionPartido
     {
         [Key] public int Id { get; set; }
         public Partido Partido { get; set; }
@@ -30,11 +30,6 @@ namespace Obligatorio.LogicaNegocio.ValueObjects
             this.RojasDirectas = rojasD;
             this.RojasAcumuladas = rojasA;
             this.Amarillas = amarillas;
-        }
-
-        public bool Validar()
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using Obligatorio.LogicaNegocio.InterfacesRepositorios;
 using Obligatorio.LogicaNegocio.Entidades;
+using Obligatorio.LogicaNegocio.ExcepcionesDominio;
+using System.Linq;
 
 namespace Obligatorio.LogicaAccesoDatos.RepositorioEntityFramework
 {
@@ -14,54 +16,123 @@ namespace Obligatorio.LogicaAccesoDatos.RepositorioEntityFramework
         {
             _db = db;
         }
-        public void Add(Seleccion obj)
+        public bool Add(Seleccion nuevoSeleccion)
         {
-            throw new NotImplementedException();
+            if (nuevoSeleccion == null)
+                throw new SeleccionException("El partido es nulo");
+            nuevoSeleccion.Validar();
+            try
+            {
+                foreach (Seleccion s in _db.Selecciones)
+                {
+                    if(s.Pais == nuevoSeleccion.Pais)
+                    {
+                        throw new SeleccionException("Ya hay una selección con ese país");
+                    }
+                }
+                _db.Selecciones.Add(nuevoSeleccion);
+                _db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                throw new SeleccionException
+                    ($"La seleccion no se pudo agregar. Más info: {ex.Message}");
+            }
         }
 
         public IEnumerable<Seleccion> FindAll()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return _db.Selecciones.ToList();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new SeleccionException("No se pueden recuperar selecciones", ex);
+            }
         }
 
         public Seleccion FindById(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Seleccion unSeleccion = _db.Selecciones.Find(id);
+                return unSeleccion;
+            }
+            catch (Exception ex)
+            {
+                throw new SeleccionException($"No se puede recuperar la selección {id}", ex);
+            }
         }
 
         public bool PaisTieneSeleccion(int idPais)
         {
-            throw new NotImplementedException();
+            foreach(Seleccion s in _db.Selecciones)
+            {
+                if(s.PaisId == idPais)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
-        public void Remove(int id)
+        public bool Remove(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Seleccion seleccion = _db.Selecciones.Find(id);
+                if (seleccion == null)
+                    throw new SeleccionException($"No existe la selección con Id={id}");
+                if (SeleccionTieneRegistro(id))
+                    throw new SeleccionException($"La selección con Id={id} tiene registros, no se puede eliminar");
+                _db.Selecciones.Remove(seleccion);
+                _db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new SeleccionException($"No se puede eliminar la selección {id}", ex);
+            }
         }
 
         public bool SeleccionTieneRegistro(int idSeleccion)
         {
-            throw new NotImplementedException();
+            foreach (Partido p in _db.Partidos)
+            {
+                if (p.Infoselpar[0].SeleccionId == idSeleccion || p.Infoselpar[1].SeleccionId == idSeleccion)
+                {
+                return true;
+                }            
+            }
+
+            return false;
         }
 
-        public void Update(Seleccion obj)
+        public bool Update(Seleccion obj)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (obj == null)
+                    throw new SeleccionException("No hay selección para modificar");
+                Seleccion viejoSeleccion = _db.Selecciones.Find(obj.Id);
+                if (viejoSeleccion == null)
+                    throw new SeleccionException($"No existe la selección con Id={obj.Id}");
+                viejoSeleccion.Update(obj);
+                _db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                throw new SeleccionException($"No se puede actualizar la selección {obj.Id}", ex);
+            }
         }
 
-        public bool ValidarEmailContacto(string email)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool ValidarNombreContacto(string nombre)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool ValidarTelefonoContacto(string telefono)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

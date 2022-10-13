@@ -13,7 +13,11 @@ namespace Obligatorio.LogicaNegocio.ValueObjects
 
         public bool Validar()
         {
-            throw new NotImplementedException();
+            if(URL[URL.Length - 4].ToString() != "." && URL.Contains(".png"))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

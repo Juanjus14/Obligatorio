@@ -18,17 +18,20 @@ namespace Obligatorio.LogicaAccesoDatos.RepositorioEntityFramework
         {
             _db = db;
         }
-        public void Add(Partido nuevoPartido)
+        public bool Add(Partido nuevoPartido)
         {
             if (nuevoPartido == null)
                 throw new PartidoException("El partido es nulo");
             nuevoPartido.Validar();
             try
             {
-
-                _db.Partidos.Add(nuevoPartido);
-                _db.SaveChanges();
-
+                if(!ExistePartidoEnFechaHora(nuevoPartido.Fecha, nuevoPartido.Hora) && !ExistePartidoMismasSelecciones(nuevoPartido.Infoselpar[0].Seleccion, nuevoPartido.Infoselpar[1].Seleccion))
+                {
+                    _db.Partidos.Add(nuevoPartido);
+                    _db.SaveChanges();
+                    return true;
+                }
+                return false;
             }
             catch (Exception ex)
             {
@@ -102,7 +105,7 @@ namespace Obligatorio.LogicaAccesoDatos.RepositorioEntityFramework
             return ret;
         }
 
-        public void Remove(int id)
+        public bool Remove(int id)
         {
             try
             {
@@ -111,6 +114,7 @@ namespace Obligatorio.LogicaAccesoDatos.RepositorioEntityFramework
                     throw new PartidoException($"No existe el partido con Id={id}");
                 _db.Partidos.Remove(partido);
                 _db.SaveChanges();
+                return true;
             }
             catch (Exception ex)
             {
@@ -118,7 +122,7 @@ namespace Obligatorio.LogicaAccesoDatos.RepositorioEntityFramework
             }
         }
 
-        public void Update(Partido obj)
+        public bool Update(Partido obj)
         {
             try
             {
@@ -129,6 +133,7 @@ namespace Obligatorio.LogicaAccesoDatos.RepositorioEntityFramework
                     throw new PartidoException($"No existe el partido con Id={obj.Id}");
                 viejoPartido.Update(obj);
                 _db.SaveChanges();
+                return true;
             }
             catch (Exception ex)
             {
@@ -137,14 +142,6 @@ namespace Obligatorio.LogicaAccesoDatos.RepositorioEntityFramework
             }
         }
 
-        public bool ValidarFecha(DateTime fecha)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool ValidarSelecciones(Seleccion selUno, Seleccion selDos)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

@@ -31,7 +31,7 @@ namespace Obligatorio.LogicaAccesoDatos.RepositorioEntityFramework
                 .OwnsOne<NombrePais>(np => np.Nombre);
 
                  modelBuilder.Entity<Pais>()
-                .OwnsOne<CodigoPais>(cp => cp.Codigo);
+                .OwnsOne<CodigoPais>(cp => cp.CodigoISO);
 
                  modelBuilder.Entity<Pais>()
                 .OwnsOne<ImagenPais>(im => im.Imagen);

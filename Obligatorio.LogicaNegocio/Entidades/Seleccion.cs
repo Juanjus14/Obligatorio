@@ -37,11 +37,26 @@ namespace Obligatorio.LogicaNegocio.Entidades
             this.Grupo = grupo;
             this.Puntuacion = 0;
         }
-               
+
+        public void Update(Seleccion seleccionConNuevosDatos)
+        {
+            Pais = seleccionConNuevosDatos.Pais;
+            PaisId = seleccionConNuevosDatos.PaisId;
+            Contacto.Nombre = seleccionConNuevosDatos.Contacto.Nombre;
+            Contacto.Email = seleccionConNuevosDatos.Contacto.Email;
+            Contacto.Telefono = seleccionConNuevosDatos.Contacto.Telefono;
+            CantidadApostadores = seleccionConNuevosDatos.CantidadApostadores;
+            Grupo = seleccionConNuevosDatos.Grupo;
+            Puntuacion = seleccionConNuevosDatos.Puntuacion;
+        }
 
         public bool Validar()
         {
-            return Pais.Validar() && Contacto.Validar() && CantidadApostadores >=0 && ((int)Grupo) >= 0 && ((int)Grupo) <= 7 && Puntuacion >= 0;
+            if (Pais.Validar() && Contacto.Validar() && CantidadApostadores >= 0 && ((int)Grupo) >= 0 && ((int)Grupo) <= 7 && Puntuacion >= 0)
+            {
+                return true;        
+            }
+            return false;
         }
     }
 }

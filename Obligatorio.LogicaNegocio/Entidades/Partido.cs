@@ -20,13 +20,32 @@ namespace Obligatorio.LogicaNegocio.Entidades
         public DateTime Fecha { get; set; }
         public EnumeradosObligatorio.Horas Hora { get; set; }
 
-        DateTime fechaInicGrup = new DateTime(20, 11, 2022, 0, 0, 0);
-
-        DateTime fechaFinGrup = new DateTime(2, 12, 2022, 23, 59, 59);
-
         public bool Validar()
         {
-            return Fecha >= fechaInicGrup && Fecha <= fechaFinGrup  ; 
+            return ValidarFecha() && ValidarSelecciones(); 
+        }
+
+        public bool ValidarFecha()
+        {
+            DateTime f1 = new DateTime(2022, 11, 20, 0, 0, 0);
+            DateTime f2 = new DateTime(2022, 12, 2, 23, 59, 59);
+            if (Fecha >= f1 && Fecha <= f2)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool ValidarSelecciones()
+        {
+            if (Infoselpar[0].Seleccion != Infoselpar[1].Seleccion && Infoselpar[0].Seleccion.Grupo == Infoselpar[1].Seleccion.Grupo)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public Partido() {

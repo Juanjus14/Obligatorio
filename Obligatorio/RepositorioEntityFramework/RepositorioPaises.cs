@@ -20,17 +20,17 @@ namespace Obligatorio.LogicaAccesoDatos.RepositorioEntityFramework
             _db = db;
         }
 
-        public void Add(Pais nuevoPais)
+        public bool Add(Pais nuevoPais)
         {
+            
             if (nuevoPais == null)
                 throw new PaisException("El país es nulo");
             nuevoPais.Validar();
             try
             {
-
                 _db.Paises.Add(nuevoPais);
                 _db.SaveChanges();
-
+                return true;
             }
             catch (Exception ex)
             {
@@ -150,7 +150,7 @@ namespace Obligatorio.LogicaAccesoDatos.RepositorioEntityFramework
             return null;
         }
 
-        public void Remove(int id)
+        public bool Remove(int id)
         {
             try
             {
@@ -161,6 +161,7 @@ namespace Obligatorio.LogicaAccesoDatos.RepositorioEntityFramework
                     throw new PaisException($"El país con Id={id} tiene registros, no se puede eliminar");
                 _db.Paises.Remove(pais);
                 _db.SaveChanges();
+                return true;
             }
             catch (Exception ex)
             {
@@ -168,7 +169,7 @@ namespace Obligatorio.LogicaAccesoDatos.RepositorioEntityFramework
             }
         }
 
-        public void Update(Pais obj)
+        public bool Update(Pais obj)
         {
             try
             {
@@ -179,6 +180,7 @@ namespace Obligatorio.LogicaAccesoDatos.RepositorioEntityFramework
                     throw new PaisException($"No existe el país con Id={obj.Id}");
                 viejoPais.Update(obj);
                 _db.SaveChanges();
+                return true;
             }
             catch (Exception ex)
             {

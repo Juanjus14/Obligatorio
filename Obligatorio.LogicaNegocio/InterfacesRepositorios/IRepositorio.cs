@@ -7,9 +7,9 @@ namespace Obligatorio.LogicaNegocio.InterfacesRepositorios
 {   
      public interface IRepositorio<T> where T : class
     {
-        void Add(T obj);
-        void Remove(int id);
-        void Update(T obj);
+        bool Add(T obj);
+        bool Remove(int id);
+        bool Update(T obj);
         T FindById(int id);
         IEnumerable<T> FindAll();
 
